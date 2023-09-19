@@ -1,0 +1,124 @@
+:root {
+  --dark-blue: #101c2c;
+  --light-blue: #05c3ff;
+  --game-over: rgba(0, 0, 0, 0.9);
+  --principal: #c7cdd3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Righteous', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--principal);
+}
+
+#start-screen {
+  font-size: 40px;
+  text-align: center;
+  color: var(--dark-blue);
+}
+
+#start-screen #start-button {
+  font-size: 40px;
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--dark-blue);
+  color: var(--principal);
+  font-family: 'Righteous', sans-serif;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+}
+
+#start-screen #start-button:hover {
+  color: var(--dark-blue);
+  background-color: #a2abae;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d; /* A propriedade transform-style define se os elemento filhos são posicionados em um espaco 3D ou serão achatados no plano do elemento */
+  transition: transform 0.5s;
+}
+
+:where(.card-back, .card-front) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: box-shadow 200ms ease;
+  backface-visibility: hidden;
+  /* A propriedade backface-visibility determina se deve ser exibido ou não a parte de trás do elemento para o usuário. */
+}
+
+:where(.card-back, .card-front):hover {
+  box-shadow: none;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.transparency {
+  opacity: 70%;
+}
+
+.card-front {
+  background-color: var(--dark-blue);
+  transform: rotateY(180deg);
+}
+
+.card-back {
+  background-color: var(--light-blue);
+  font-size: 30px;
+  color: var(--dark-blue);
+  /* display: none; */
+}
+
+#gameOver {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--game-over);
+  color: white;
+  font-size: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#restart {
+  padding: 20px;
+  font-size: 20px;
+  background-color: yellow;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: 'Righteous', sans-serif;
+}
+
+#gameBoard {
+  max-width: 700px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}

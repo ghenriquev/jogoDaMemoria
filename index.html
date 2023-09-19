@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/styles/style.css" />
+    <title>Memória</title>
+  </head>
+  <body>
+    <div id="start-screen">
+      <div class="hello">
+        <p>Bem vindo ao Jogo da Memória!</p>
+        <p>Para iniciar o jogo, clique no botão Iniciar</p>
+      </div>
+      <div class="start">
+        <button id="start-button" onclick="startGame()">Iniciar</button>
+      </div>
+    </div>
+
+    <div id="gameBoard"></div>
+
+    <div id="gameOver">
+      <div>Parabéns, você completou o jogo!</div>
+
+      <button id="restart" onclick="restart()">Jogue novamente</button>
+    </div>
+
+    <script src="./assets/scripts/game.js"></script>
+    <script src="./assets/scripts/script.js"></script>
+  </body>
+</html>
