@@ -21,13 +21,17 @@ body {
 }
 
 #start-screen {
-  font-size: 40px;
+  font-size: 36px;
   text-align: center;
   color: var(--dark-blue);
 }
 
+.hello {
+  user-select: none;
+}
+
 #start-screen #start-button {
-  font-size: 40px;
+  font-size: 36px;
   padding: 15px;
   border-radius: 20px;
   border: none;
@@ -45,8 +49,8 @@ body {
 }
 
 .card {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   position: relative;
   transform-style: preserve-3d; /* A propriedade transform-style define se os elemento filhos são posicionados em um espaco 3D ou serão achatados no plano do elemento */
   transition: transform 0.5s;
@@ -63,12 +67,17 @@ body {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
   cursor: pointer;
   transition: box-shadow 200ms ease;
+  user-select: none;
   backface-visibility: hidden;
   /* A propriedade backface-visibility determina se deve ser exibido ou não a parte de trás do elemento para o usuário. */
 }
 
 :where(.card-back, .card-front):hover {
   box-shadow: none;
+}
+
+.card-front img {
+  width: 60%;
 }
 
 .flip {
@@ -86,7 +95,7 @@ body {
 
 .card-back {
   background-color: var(--light-blue);
-  font-size: 30px;
+  font-size: 24px;
   color: var(--dark-blue);
   /* display: none; */
 }
@@ -121,4 +130,34 @@ body {
   display: grid;
   grid-template: 1fr 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr;
   gap: 20px;
+  /* border: 2px solid red; */
+}
+
+.counters {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.counter {
+  /* border: 2px solid red; */
+  padding: 12px 24px;
+  width: 100%;
+  height: fit-content;
+  font-family: 'JetBrains Mono', monospace;
+  user-select: none;
+}
+
+.counter-title {
+  font-weight: 700;
+}
+
+#game-container {
+  /* border: 2px solid red; */
+  display: flex;
+  gap: 48px;
+  padding: 12px;
 }

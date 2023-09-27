@@ -1,12 +1,22 @@
 const FRONT = 'card-front';
 const BACK = 'card-back';
+const startButton = $('#start-button');
+const gameBoard = $('#gameBoard');
+const counters = $('.counters');
+let counterContent = document.querySelector('.counter-content');
+let counterMov = 0;
+var interval;
+counters.hide();
+gameBoard.hide();
 
 // Inicializa o jogo
+
 function startGame() {
-  let startScreen = document.querySelector('#start-screen');
-  startScreen.style.display = 'none';
+  let startScreen = $('#start-screen');
+  startScreen.fadeOut(1000);
   game.createCardsFromTechs();
   initializeCards();
+  return true;
 }
 
 // Função que inicializa as cartas
@@ -73,6 +83,7 @@ function flipCard() {
         }, 1000);
 
         if (game.checkGameOver()) {
+          clearTimeout(timer());
           setTimeout(() => {
             let gameOverLayer = document.querySelector('#gameOver');
             gameOverLayer.style.display = 'flex';
@@ -87,6 +98,8 @@ function flipCard() {
           game.unflipCards();
         }, 1000);
       }
+
+      movementCounter();
     }
   }
 }
@@ -94,7 +107,51 @@ function flipCard() {
 // Função para restartar o jogo
 function restart() {
   game.clearCards();
+  restartCounters();
   startGame();
+  timer();
   let gameOverLayer = document.querySelector('#gameOver');
   gameOverLayer.style.display = 'none';
+}
+
+// Personalização com jQuery
+
+startButton.on('click', () => {
+  setTimeout(() => {
+    gameBoard.fadeIn(1000);
+    counters.fadeIn(1000);
+    timer();
+  }, 1000);
+});
+
+function timer() {
+  $('.seconds').html('00');
+  $('.minutes').html('00');
+
+  let seconds = 0;
+  let minutes = 0;
+  minutes = seconds / 60;
+
+  function zeroEsquerda(val) {
+    return val > 9 ? val : '0' + val;
+  }
+
+  if (!interval) {
+    interval = setInterval(() => {
+      $('.seconds').html(zeroEsquerda(++seconds % 60));
+      $('.minutes').html(zeroEsquerda(parseInt(minutes, 10)));
+    }, 1000);
+  }
+}
+
+function movementCounter() {
+  counterMov++;
+  counterContent.innerHTML = counterMov;
+}
+
+function restartCounters() {
+  clearInterval(interval);
+  interval = null;
+  counterContent.innerHTML = "0";
+  counterMov = 0;
 }

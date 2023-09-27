@@ -15,6 +15,52 @@ let game = {
     'react',
   ],
 
+  cards: null, 
+
+  // Método que cria os objetos de todas as cartas
+  createCardsFromTechs: function () {
+    this.cards = [];
+
+    this.techs.forEach((tech) => {
+      this.cards.push(this.createPairFromTech(tech));
+    });
+
+    // Vamos usar o método flatMap() que vai mapear e "aplanar" o resultado, ou seja, vai pegar os pares que recebeu da função createPairFromTech() e separá-los em dois elementos distintos, criando assim as 20 cartas do tabuleiro.
+    this.cards = this.cards.flatMap((pair) => pair);
+    this.shuffleCards();
+    return this.cards;
+  },
+
+  // Método que cria o par de cartas de cada tecnologia
+  createPairFromTech: function (tech) {
+    return [
+      { id: this.createIdWithTech(tech), icon: tech, flipped: false },
+      { id: this.createIdWithTech(tech), icon: tech, flipped: false },
+    ];
+  },
+
+  // Método para criar um ID distinto para cada carta
+  createIdWithTech: (tech) => {
+    return tech + parseInt(Math.random() * 1000);
+  },
+
+  // Método para embaralhar as cartas
+  shuffleCards: function () {
+    let currentIndex = this.cards.length;
+    let randomIndex = 0;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [this.cards[randomIndex], this.cards[currentIndex]] = [
+        this.cards[currentIndex],
+        this.cards[randomIndex],
+      ];
+    }
+  },
+
+  // Método para definir as cartas
   setCard: function (id) {
     let card = this.cards.filter((card) => card.id === id)[0]; // Esse filter vai filtrar somente o elemento que tenha o id igual o id passado por parâmetro
     if (card.flipped || this.lockMode) {
@@ -58,50 +104,5 @@ let game = {
 
   checkGameOver: function () {
     return this.cards.filter((card) => card.flipped).length === 20;
-  },
-
-  cards: null,
-
-  // Método que cria os objetos de todas as cartas
-  createCardsFromTechs: function () {
-    this.cards = [];
-
-    this.techs.forEach((tech) => {
-      this.cards.push(this.createPairFromTech(tech));
-    });
-
-    // Vamos usar o método flatMap() que vai mapear e "aplanar" o resultado, ou seja, vai pegar os pares que recebeu da função createPairFromTech() e separá-los em dois elementos distintos, criando assim as 20 cartas do tabuleiro.
-    this.cards = this.cards.flatMap((pair) => pair);
-    this.shuffleCards();
-    return this.cards;
-  },
-
-  // Método que cria o par de cartas de cada tecnologia
-  createPairFromTech: function (tech) {
-    return [
-      { id: this.createIdWithTech(tech), icon: tech, flipped: false },
-      { id: this.createIdWithTech(tech), icon: tech, flipped: false },
-    ];
-  },
-
-  // Método para criar um ID distinto para cada carta
-  createIdWithTech: (tech) => {
-    return tech + parseInt(Math.random() * 1000);
-  },
-
-  // Método para embaralhar as cartas
-  shuffleCards: function () {
-    let currentIndex = this.cards.length;
-    let randomIndex = 0;
-
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      [this.cards[randomIndex], this.cards[currentIndex]] = [
-        this.cards[currentIndex],
-        this.cards[randomIndex],
-      ];
-    }
   },
 };
