@@ -115,15 +115,20 @@ body {
   height: 100%;
   background-color: var(--game-over);
   color: white;
-  font-size: 5rem;
+  font-size: 4rem;
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+.gameover-text {
+  padding: 12px;
+  text-align: center;
+}
+
 #restart {
-  padding: 20px;
+  padding: 2rem;
   font-size: 2rem;
   background-color: yellow;
   border: none;
@@ -214,5 +219,23 @@ body {
     flex-direction: row;
     justify-content: space-around;
     font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  
+  #gameOver {
+    font-size: 4rem;
+  }
+  
+  #restart {
+    padding: 20px;
+    font-size: 2rem;
+    background-color: yellow;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: 'Righteous', sans-serif;
   }
 }

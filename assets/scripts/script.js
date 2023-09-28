@@ -4,12 +4,23 @@ const startButton = $('#start-button');
 const gameBoard = $('#gameBoard');
 const gameContainer = $('#game-container');
 const counters = $('.counters');
+const hello = $('.hello');
+const buttonDiv = $('.start');
 let counterContent = document.querySelector('.counter-content');
 let counterMov = 0;
 var interval;
 counters.hide();
 gameBoard.hide();
 gameContainer.hide();
+hello.hide();
+buttonDiv.hide();
+
+$('document').ready(() => {
+  hello.fadeIn(1000);
+  setTimeout(() => {
+    buttonDiv.slideDown(1000);
+  }, 1000)
+})
 
 // Inicializa o jogo
 
