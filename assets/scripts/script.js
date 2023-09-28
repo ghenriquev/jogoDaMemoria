@@ -2,12 +2,14 @@ const FRONT = 'card-front';
 const BACK = 'card-back';
 const startButton = $('#start-button');
 const gameBoard = $('#gameBoard');
+const gameContainer = $('#game-container');
 const counters = $('.counters');
 let counterContent = document.querySelector('.counter-content');
 let counterMov = 0;
 var interval;
 counters.hide();
 gameBoard.hide();
+gameContainer.hide();
 
 // Inicializa o jogo
 
@@ -120,6 +122,7 @@ startButton.on('click', () => {
   setTimeout(() => {
     gameBoard.fadeIn(1000);
     counters.fadeIn(1000);
+    gameContainer.fadeIn(1000);
     timer();
   }, 1000);
 });

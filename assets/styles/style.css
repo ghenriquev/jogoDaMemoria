@@ -11,19 +11,28 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100vh;
+  width: 100vw;
+  font-size: 62.5%;
+}
+
 body {
   font-family: 'Righteous', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: var(--principal);
 }
 
 #start-screen {
-  font-size: 36px;
+  font-size: 3.6rem;
   text-align: center;
   color: var(--dark-blue);
+  max-width: 100%;
+  padding: 24px;
 }
 
 .hello {
@@ -31,7 +40,7 @@ body {
 }
 
 #start-screen #start-button {
-  font-size: 36px;
+  font-size: 3.6rem;
   padding: 15px;
   border-radius: 20px;
   border: none;
@@ -49,8 +58,8 @@ body {
 }
 
 .card {
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
   position: relative;
   transform-style: preserve-3d; /* A propriedade transform-style define se os elemento filhos são posicionados em um espaco 3D ou serão achatados no plano do elemento */
   transition: transform 0.5s;
@@ -95,7 +104,7 @@ body {
 
 .card-back {
   background-color: var(--light-blue);
-  font-size: 24px;
+  font-size: 2.4rem;
   color: var(--dark-blue);
   /* display: none; */
 }
@@ -107,7 +116,7 @@ body {
   height: 100%;
   background-color: var(--game-over);
   color: white;
-  font-size: 50px;
+  font-size: 5rem;
   display: none;
   justify-content: center;
   align-items: center;
@@ -116,7 +125,7 @@ body {
 
 #restart {
   padding: 20px;
-  font-size: 20px;
+  font-size: 2rem;
   background-color: yellow;
   border: none;
   border-radius: 10px;
@@ -140,6 +149,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  font-size: 2rem;
 }
 
 .counter {
@@ -160,4 +170,54 @@ body {
   display: flex;
   gap: 48px;
   padding: 12px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  html {
+    font-size: 47.5%;
+  }
+
+  #game-container {
+    flex-direction: column-reverse;
+  }
+
+  .counters{
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 2rem;
+  }
+}
+
+/* Extra small devices */
+@media (min-width: 481px) and (max-width: 767px) {
+  html {
+    font-size: 47.5%;
+  }
+
+  #game-container {
+    flex-direction: column-reverse;
+  }
+
+  .counters{
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 2rem;
+  }
+}
+
+/* Small tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Large tablets/laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Desktops */
+@media (min-width: 1200px) and (max-width: 1919px) {
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
 }
