@@ -166,16 +166,15 @@ body {
 }
 
 #game-container {
-  /* border: 2px solid red; */
+  border: 2px solid red;
   display: flex;
-  gap: 48px;
+  gap: 4.8rem;
   padding: 12px;
 }
 
-/* Mobile */
-@media (max-width: 480px) {
+@media (max-width: 399px) {
   html {
-    font-size: 47.5%;
+    font-size: 30%;
   }
 
   #game-container {
@@ -185,7 +184,24 @@ body {
   .counters{
     flex-direction: row;
     justify-content: space-around;
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (min-width: 400px) and (max-width: 480px) {
+  html {
+    font-size: 40%;
+  }
+
+  #game-container {
+    flex-direction: column-reverse;
+  }
+
+  .counters{
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.5rem;
   }
 }
 
@@ -204,20 +220,4 @@ body {
     justify-content: space-around;
     font-size: 2rem;
   }
-}
-
-/* Small tablets */
-@media (min-width: 768px) and (max-width: 991px) {
-}
-
-/* Large tablets/laptops */
-@media (min-width: 992px) and (max-width: 1199px) {
-}
-
-/* Desktops */
-@media (min-width: 1200px) and (max-width: 1919px) {
-}
-
-/* Extra large screens */
-@media (min-width: 1920px) {
 }
